@@ -209,6 +209,7 @@ class CreateSmartCampaign(models.Model):
     desc_1_user = models.CharField(max_length=500)
     desc_2_user = models.CharField(max_length=500)
     campaign_name = models.CharField(max_length=500)
+    is_political = models.CharField(max_length=500)
 
 
 
@@ -220,7 +221,7 @@ class CreateSmartCampaign(models.Model):
             self.business_name, self.business_location_id, 
             self.headline_1_user, self.headline_2_user,
             self.headline_3_user, self.desc_1_user, self.desc_2_user, 
-            self.campaign_name
+            self.campaign_name, self.is_political
             )
 
 # Model to store frontend data to get campaign settings

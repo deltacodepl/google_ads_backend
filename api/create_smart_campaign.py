@@ -31,7 +31,7 @@ def create_smart(
     phone_number, landing_page, 
     business_name, business_location_id,
     headline_1_user, headline_2_user, headline_3_user,
-    desc_1_user, desc_2_user, campaign_name, use_login_id):
+    desc_1_user, desc_2_user, campaign_name, is_political, use_login_id):
     try:
         # Configurations
         GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
@@ -204,6 +204,16 @@ def create_smart(
         campaign.advertising_channel_sub_type = (
             client.enums.AdvertisingChannelSubTypeEnum.SMART_CAMPAIGN
         )
+        # Campaign.contains_eu_political_advertising is required to create campaigns.
+        # Field required starting from Google Ads API v21
+        if is_political == "true":
+            campaign.contains_eu_political_advertising = (
+                client.enums.EuPoliticalAdvertisingStatusEnum.CONTAINS_EU_POLITICAL_ADVERTISING
+            )
+        else: 
+            campaign.contains_eu_political_advertising = (
+                client.enums.EuPoliticalAdvertisingStatusEnum.DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING
+            )
         # Assign the resource name with a temporary ID.
         campaign_service = client.get_service("CampaignService")
         campaign.resource_name = campaign_service.campaign_path(

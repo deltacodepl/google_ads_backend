@@ -166,7 +166,7 @@ class CreateSmartCampaignSerializer(serializers.ModelSerializer):
             'language_code', 'country_code', 'landing_page', 'geo_target_names', 
             'selected_budget', 'phone_number', 'business_name', 'business_location_id', 
             'headline_1_user', 'headline_2_user', 'headline_3_user',
-            'desc_1_user', 'desc_2_user', 'campaign_name']
+            'desc_1_user', 'desc_2_user', 'campaign_name', 'is_political']
 
 # Serializer for getting campaign settings
 class CampaignSettingsSerializer(serializers.ModelSerializer):

@@ -815,6 +815,9 @@ def create_smart_campaign(request):
             # get the campaign_name
             campaign_name = serializer['campaign_name'].value
 
+            # get the is_political
+            is_political = serializer['is_political'].value
+
             # call the function to get the recommendations
             smart_campaign = create_smart(
                 refresh_token, customer_id, display_name, geo_target_names,
@@ -822,7 +825,7 @@ def create_smart_campaign(request):
                 phone_number, landing_page, 
                 business_name, business_location_id,
                 headline_1_user, headline_2_user, headline_3_user,
-                desc_1_user, desc_2_user, campaign_name,
+                desc_1_user, desc_2_user, campaign_name, is_political,
                 use_login_id)
             print(smart_campaign)
             
